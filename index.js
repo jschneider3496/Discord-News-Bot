@@ -7,7 +7,7 @@ const PREFIX = "!";
 
 /* Bot start up message */
 bot.on('ready', () => {
-    console.log('Logged in as ${client.user.tag}!');
+    console.log("Bot is ready for action!");
 });
 
 /* Bot functionality */
@@ -25,8 +25,6 @@ bot.on('message', msg => {
     }
 
 });
-
-
 
 /* auth.json has the bot token */
 bot.login(auth.token);
