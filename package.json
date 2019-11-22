@@ -1,0 +1,19 @@
+{
+  "name": "discord-basic-bot",
+  "version": "1.0.0",
+  "description": "Implementing a basic discord bot.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jojo20872/Discord-Basic-Bot.git"
+  },
+  "author": "Johannes Schneider",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jojo20872/Discord-Basic-Bot/issues"
+  },
+  "homepage": "https://github.com/jojo20872/Discord-Basic-Bot#readme"
+}
