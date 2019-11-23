@@ -23,8 +23,10 @@ bot.on('message', msg => {
             msg.channel.sendMessage('pong');
             break;
         case 'clear':
-            if(!args[1]) return MessageChannel.reply("Error: No number defined for clear")
-            msg.channel.bulkDelete(args[1]);
+            if (!args[1])
+                msg.reply("Error: Define number for clear")
+            else
+                msg.channel.bulkDelete(args[1]);
             break;
     }
 
