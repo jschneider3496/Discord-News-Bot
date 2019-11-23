@@ -1,6 +1,8 @@
 const Discord = require('discord.js');
 const bot = new Discord.Client();
+const newsapi = new newsapi('./auth.json');
 const auth = require('./auth.json');
+
 
 /* Command prefix */
 const PREFIX = "!";
@@ -12,8 +14,10 @@ bot.on('ready', () => {
 
 /* Bot functionality */
 bot.on('message', msg => {
+    const search = msg.content.substring(PREFIX.length);
     /* Splitting user message into arguments */
     let args = msg.content.substring(PREFIX.length).split(" ");
+    
 
     /* First argument is word directly following PREFIX (!) */
     /* Ex: !ping */
@@ -27,6 +31,10 @@ bot.on('message', msg => {
                 msg.reply("Error: Define number for clear")
             else
                 msg.channel.bulkDelete(args[1]);
+            break;
+        case 'repeat':
+            msg.channel.sendMessage(search);
+
             break;
     }
 
