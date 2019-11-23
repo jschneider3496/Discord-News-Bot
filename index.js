@@ -1,7 +1,10 @@
-const Discord = require('discord.js');
-const bot = new Discord.Client();
-const newsapi = new newsapi('./auth.json');
 const auth = require('./auth.json');
+const Discord = require('discord.js');
+const NewsAPI = require('newsapi');
+const Request = require('requests');
+const bot = new Discord.Client();
+const newsapi = new NewsAPI(auth.newsapi);
+
 
 
 /* Command prefix */
@@ -34,7 +37,6 @@ bot.on('message', msg => {
             break;
         case 'repeat':
             msg.channel.sendMessage(search);
-
             break;
     }
 
