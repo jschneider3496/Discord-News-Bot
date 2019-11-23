@@ -1,4 +1,4 @@
 # Discord-Basic-Bot
 Implementing a basic discord bot.
-#Acknowledgements
+# acknowledgements
 News functionality is powered by News API
