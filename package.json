@@ -19,6 +19,7 @@
   "dependencies": {
     "discord.js": "^11.5.1",
     "newsapi": "^2.4.0",
+    "node-fetch": "^2.6.0",
     "requests": "^0.3.0"
   }
 }
