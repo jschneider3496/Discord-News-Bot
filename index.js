@@ -20,7 +20,7 @@ bot.on('message', msg => {
     const search = msg.content.substring(PREFIX.length);
     /* Splitting user message into arguments */
     let args = msg.content.substring(PREFIX.length).split(" ");
-    
+
 
     /* First argument is word directly following PREFIX (!) */
     /* Ex: !ping */
@@ -37,6 +37,16 @@ bot.on('message', msg => {
             break;
         case 'repeat':
             msg.channel.sendMessage(search);
+            break;
+        case 'news':
+            var url = 'https://newsapi.org/v2/top-headlines?' +
+                'country=us&' +
+                'apiKey=b6d6d0d595d9495d92a90fa984690c77';
+            var req = new Request(url);
+            fetch(req)
+                .then(function (response) {
+                    console.log(response.json());
+                })
             break;
     }
 
