@@ -22,6 +22,10 @@ bot.on('message', msg => {
         case 'ping':
             msg.channel.sendMessage('pong');
             break;
+        case 'clear':
+            if(!args[1]) return MessageChannel.reply("Error: No number defined for clear")
+            msg.channel.bulkDelete(args[1]);
+            break;
     }
 
 });
