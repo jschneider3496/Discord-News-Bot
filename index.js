@@ -40,17 +40,31 @@ bot.on('message', msg => {
         case 'repeat':
             msg.channel.sendMessage(search);
             break;
+        /* Lists args[1] number of top-headlines from U.S. */
         case 'news':
-            var req = 'https://newsapi.org/v2/top-headlines?' +
+            /* Uses newsapi for news data */
+            var url = 'https://newsapi.org/v2/top-headlines?' +
                 'country=us&' +
                 'apiKey=' + auth.newsapi;
-            axios(req)
+            /* Returns JSON object with news data that can be iterated over. */
+            /* Currently shows titles */
+            axios(url)
                 .then(function (response) {
+                    var count; /* How many titles to show */
+                    if (!args[1]) /* Default: no args[1] */
+                        count = 5;
+                    else if (parseInt(args[1]) > 10) { /* Csse: Over 10 (takes too long) */
+                        msg.channel.sendMessage("Max number of articles I can fetch is 10.");
+                        count = 10;
+                    } else
+                        count = parseInt(args[1]);
+
+                    /* JSON data containing article information */
                     var jsonData = response.data.articles;
-                    for (var data in jsonData) {
-                        console.log(jsonData[data].title);
-                    }
-                    // console.log(response.data.articles);
+
+                    /* Print in chat titles of articles */
+                    for (var i = 1; i < count + 1; i++)
+                        msg.channel.sendMessage("Article " + i + ": " + jsonData[i].title);
                 }).catch((err) => {
                     console.log(err);
                 });
