@@ -4,15 +4,15 @@ Discord News Bot is a bot that brings the top news headlines to Discord channels
 ## Features
 * Send Discord message including top headlines
     * !news KEYWORD KEYWORD KEYWORD ...
-        * Default: Show 3 popular articles
+        * Default: Show 3 relevant articles
     * !news X KEYWORD KEYWORD KEYWORD ...
-        * Show X popular articles (max of 10)
+        * Show X relevant articles (max of 10)
     * !newspop X KEYWORD KEYWORD KEYWORD ...
-        * Show X popular headlines 
+        * Show X popular articles 
     * !newspub X KEYWORD KEYWORD KEYWORD ...
-        * Show X recently published headlines 
+        * Show X recently published articles 
     * !newsrel X KEYWORD KEYWORD KEYWORD ...
-        * Show X relevant headlines 
+        * Show X relevant articles 
     * !newsth X KEYWORD KEYWORD KEYWORD ...
         * Show X top headlines 
 ## In action
