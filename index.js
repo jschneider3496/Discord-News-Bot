@@ -37,17 +37,17 @@ bot.on('message', msg => {
         case 'repeat':
             msg.channel.sendMessage(search);
             break;
-        case 'news':                    /* Show popular news */       
-        case 'newspop':                 /* Show popular news */  
+        case 'news':                    /* Show relevant news */
+        case 'newsrel':                 /* Show relevant news */
+            getNews(args, "rel");
+            break;                     
+        case 'newspop':                 /* Show popular news */
             getNews(args, "pop");
             break;
-        case 'newspub':                 /* Show recently published news */  
+        case 'newspub':                 /* Show recently published news */
             getNews(args, "pub");
             break;
-        case 'newsrel':                 /* Show relevant news */  
-            getNews(args, "rel");
-            break;
-        case 'newsth':                  /* Show top headlines */  
+        case 'newsth':                  /* Show top headlines */
             getNews(args, "th");
             break;
     }
