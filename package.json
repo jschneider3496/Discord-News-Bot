@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/jojo20872/Discord-Basic-Bot#readme",
   "dependencies": {
+    "axios": "^0.19.0",
     "discord.js": "^11.5.1",
     "newsapi": "^2.4.0",
     "node-fetch": "^2.6.0",

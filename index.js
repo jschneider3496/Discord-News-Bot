@@ -3,6 +3,7 @@ const Discord = require('discord.js');
 const NewsAPI = require('newsapi');
 const Request = require('requests');
 const fetch = require('node-fetch');
+const axios = require('axios');
 const bot = new Discord.Client();
 const newsapi = new NewsAPI(auth.newsapi);
 
@@ -40,14 +41,20 @@ bot.on('message', msg => {
             msg.channel.sendMessage(search);
             break;
         case 'news':
-            var url = 'https://newsapi.org/v2/top-headlines?' +
+            var req = 'https://newsapi.org/v2/top-headlines?' +
                 'country=us&' +
                 'apiKey=' + auth.newsapi;
-            var req = new Request(url);
-            fetch(req)
+            axios(req)
                 .then(function (response) {
-                    console.log(response.json());
-                })
+                    var jsonData = response.data.articles;
+                    for (var data in jsonData) {
+                        console.log(jsonData[data].title);
+                    }
+                    // console.log(response.data.articles);
+                }).catch((err) => {
+                    console.log(err);
+                });
+
             break;
     }
 
