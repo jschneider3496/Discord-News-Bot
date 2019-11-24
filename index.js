@@ -7,8 +7,6 @@ const axios = require('axios');
 const bot = new Discord.Client();
 const newsapi = new NewsAPI(auth.newsapi);
 
-
-
 /* Command prefix */
 const PREFIX = "!";
 
@@ -22,7 +20,6 @@ bot.on('message', msg => {
     const search = msg.content.substring(PREFIX.length);
     /* Splitting user message into arguments */
     let args = msg.content.substring(PREFIX.length).split(" ");
-
 
     /* First argument is word directly following PREFIX (!) */
     /* Ex: !ping */
@@ -53,7 +50,7 @@ bot.on('message', msg => {
                     var count; /* How many titles to show */
                     if (!args[1]) /* Default: no args[1] */
                         count = 5;
-                    else if (parseInt(args[1]) > 10) { /* Csse: Over 10 (takes too long) */
+                    else if (parseInt(args[1]) > 10) { /* Case: Over 10 (takes too long) */
                         msg.channel.sendMessage("Max number of articles I can fetch is 10.");
                         count = 10;
                     } else
@@ -63,15 +60,20 @@ bot.on('message', msg => {
                     var jsonData = response.data.articles;
 
                     /* Print in chat titles of articles */
-                    for (var i = 1; i < count + 1; i++)
-                        msg.channel.sendMessage("Article " + i + ": " + jsonData[i].title);
+                    for (var i = 1; i < count + 1; i++) {
+                        const newsEmbed = new Discord.RichEmbed()
+                            .setColor('#4DF4F6')
+                            .setTitle("Article " + i + ": " + jsonData[i].title)
+                            .setURL(jsonData[i].url)
+                            .setDescription(jsonData[i].description)
+                            .setImage(jsonData[i].urlToImage);
+                        msg.channel.send(newsEmbed);
+                    }
                 }).catch((err) => {
                     console.log(err);
                 });
-
             break;
     }
-
 });
 
 /* auth.json has the bot token */
