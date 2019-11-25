@@ -109,7 +109,6 @@ bot.on('message', msg => {
         for (var i = firstWord; i < args.length; i++)
             url = url.concat("&q=", args[i]);
 
-        msg.channel.send(url);
         /* Returns JSON object with news data that can be iterated over. */
         axios(url)
             .then(function (response) {
